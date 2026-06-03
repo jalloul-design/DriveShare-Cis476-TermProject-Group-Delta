@@ -5,7 +5,7 @@ from models.user import User
 from auth.session_manager import SessionManager
 
 def login(user_email, user_password):
-    user = User.verify_login(user_email, user_password)
+    user = User.verify_account(user_email, user_password)
     if user is None:
         return False, "This account does not exist, Invalid email or password"
 

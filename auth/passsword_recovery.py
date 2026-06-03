@@ -34,7 +34,7 @@ class Question3_SecurityQuestion_Handler(SecurityQuestion):
             return False, 'Incorrect!'
 
 def verify_answer(question_number, user_email, answers):
-    user = User.find_by_email(user_email)
+    user = User.get_user_by_email(user_email)
     if user is None:
         return False, 'Account with this email does not exist'
 
