@@ -1,7 +1,7 @@
 # Owned By Mira
 # Function that will look up user by email, verification, and call session manager login
 
-from models.user import User
+from model.user import User
 from auth.session_manager import SessionManager
 
 def login(user_email, user_password):

@@ -3,8 +3,10 @@
 
 from flask import Blueprint, render_template, request, redirect, url_for, flash
 from auth.registration import user_account_creation
-from auth.login import user_login, user_logout
+from auth.login import login, logout
 from auth.session_manager import SessionManager
+from auth.password_recovery import verify_answer, reset_password
+from model.user import User
 
 auth_bp = Blueprint('auth', __name__)
 

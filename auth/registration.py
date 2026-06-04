@@ -1,6 +1,6 @@
 # Owned By Mira
 # Function validation 
-from models.user import User
+from model.user import User
 
 def user_account_creation(user_email, user_password, questions, answers):
 

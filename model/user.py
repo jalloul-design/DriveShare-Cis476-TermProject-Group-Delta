@@ -1,7 +1,7 @@
 # Owned By Mira
 # Defines User Fields like password,email,id number, etc
 import bcrypt
-from database import get_connection
+from auth.database import get_connection
 
 class User:
     def __init__(self, id, user_email, user_password):

@@ -1,8 +1,8 @@
 # Owned By Mira
 # Chain Of Responsibility
 import bcrypt
-from models.user import User
-from database import get_connection
+from model.user import User
+from auth.database import get_connection
 
 class SecurityQuestion:
     def __init__(self):

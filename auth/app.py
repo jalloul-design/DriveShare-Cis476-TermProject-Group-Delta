@@ -1,5 +1,5 @@
 from flask import Flask
-from database import init_db
+from auth.database import init_db
 from auth.routes import auth_bp
 
 app = Flask(__name__)
