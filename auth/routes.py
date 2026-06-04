@@ -136,6 +136,9 @@ def reset_password_route():
 
     return render_template('auth/reset_password.html', user_email=user_email)
 
+@auth_bp.route('/')
+def index():
+    return redirect(url_for('auth.login'))
 
 
 

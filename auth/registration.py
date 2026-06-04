@@ -14,5 +14,5 @@ def user_account_creation(user_email, user_password, questions, answers):
     if existing is not None:
         return False, "Email is already linked to another account"
 
-    User.create(user_email, user_password, questions, answers)
+    User.create_account(user_email, user_password, questions, answers)
     return True, "Your account has been created!"
