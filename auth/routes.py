@@ -65,7 +65,7 @@ def logout():
 
 @auth_bp.route('/homepage')
 def homepage():
-    # Shows currrent user logged in by using singleton
+    # Shows current user logged in by using singleton
     session_manager = SessionManager()
     user = session_manager.get_current_user()
     return render_template('auth/homepage.html', user=user)

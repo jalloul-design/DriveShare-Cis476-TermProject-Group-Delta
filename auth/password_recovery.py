@@ -6,19 +6,22 @@ from auth.database import get_connection
 
 class SecurityQuestion:
     def __init__(self):
+        # Handler nect pointer
         self.next_handler = None
 
     def set_next_handler(self, handler):
+        # Linking handler to the next handler
         self.next_handler = handler
         return handler
-
+# Handler for first Security Question
 class Question1_SecurityQuestion_Handler(SecurityQuestion):
     def handle(self, user, answer):
+        # checks user current answer to the answer in the database
         if bcrypt.checkpw(answer.lower().encode(), user['security_answer_1'].encode()):
             return True, 'Correct!'
         else:
             return False, 'Incorrect!'
-
+# Handler for Second Security Question
 class Question2_SecurityQuestion_Handler(SecurityQuestion):
     def handle(self, user, answer):
         if bcrypt.checkpw(answer.lower().encode(), user['security_answer_2'].encode()):
@@ -26,22 +29,24 @@ class Question2_SecurityQuestion_Handler(SecurityQuestion):
         else:
             return False, 'Incorrect!'
 
+# Handler for the third sequrity question
 class Question3_SecurityQuestion_Handler(SecurityQuestion):
     def handle(self, user, answer):
         if bcrypt.checkpw(answer.lower().encode(), user['security_answer_3'].encode()):
             return True, 'Correct! You are now able to reset your password and log back in'
         else:
             return False, 'Incorrect!'
-
+# verifies user answer from the database
 def verify_answer(question_number, user_email, answers):
     user = User.get_user_by_email(user_email)
     if user is None:
         return False, 'Account with this email does not exist'
 
-    # Chain
+    # Building the chain for the handlers
     Q1 = Question1_SecurityQuestion_Handler()
     Q2 = Question2_SecurityQuestion_Handler()
     Q3 = Question3_SecurityQuestion_Handler()
+    # Linking the questions together
     Q1.set_next_handler(Q2)
     Q2.set_next_handler(Q3)
 
@@ -49,15 +54,20 @@ def verify_answer(question_number, user_email, answers):
     step = 1
 
     while True:
+        # if the step is for the correct question, well check for the answer
         if step == question_number:
             return current.handle(user, answers)
+        # if handler is done well throw an invalid question number
         if current.next_handler is None:
             return False, 'Incorrect!'
         current = current.next_handler
         step += 1
 
+# If you answer all three questions, user is allowed to update their password to the database
 def reset_password(user_email, new_password):
+    # Hashing the new password before we save it and upload it to the database
     new = bcrypt.hashpw(new_password.encode(), bcrypt.gensalt()).decode()
+    # once we upload the new password, well save it to the database
     connection = get_connection()
     cursor = connection.cursor()
     cursor.execute('UPDATE users SET user_password = ? WHERE user_email = ?', (new, user_email))
