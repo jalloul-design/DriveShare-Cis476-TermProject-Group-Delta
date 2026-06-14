@@ -10,3 +10,4 @@ the Chain for password recovery.
 
 Diagram 2: Sequence Diagram(User Registration):
 Description: Traces the flow of a new user registering. The form data goes from register.html -> routes.py -> registration.py, which checks if the email exists, then calls User.create_account() to hash the password and insert the new user into the database.
+![Class Diagram](registration.png)
