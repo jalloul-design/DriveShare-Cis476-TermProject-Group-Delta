@@ -18,10 +18,9 @@ Description:Shows the login process and demonstrates the Singleton pattern. When
 
 Diagram 4: Sequence Diagram(Chain)
 Description: This diagram shows the Chain of Responsibility pattern. The user answers three security questions one at a time. Each question is handled by its own handler, linked to the next_handler. The chain continues as each answer is verified, but ONLY after all three questions pass can the user reset their password.
-
 ![Sequence Diagram](sequencediagram4.png)
 
 
-Diagram 5: 
+Diagram 5: State Diagram
 Description: Shows the three possible states of a user session: Logged Out, Logged In, and Recovering Password. Transitions happen on login, logout, forgot password, wrong answer, or successful password reset. The Singleton SessionManager tracks which state the session is in.
 ![Sequence Diagram](statediagram.png)
