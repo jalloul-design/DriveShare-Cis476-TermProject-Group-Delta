@@ -7,3 +7,6 @@ Security questions which is our abstract class along with its three concrete sub
 the Chain for password recovery. 
 
 ![Class Diagram](class_diagram.png)
+
+Diagram 2: Sequence Diagram(User Registration):
+Description: Traces the flow of a new user registering. The form data goes from register.html -> routes.py -> registration.py, which checks if the email exists, then calls User.create_account() to hash the password and insert the new user into the database.
