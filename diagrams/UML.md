@@ -18,7 +18,7 @@ Description:Shows the login process and demonstrates the Singleton pattern. When
 
 Diagram 4: Sequence Diagram()
 Description: Demonstrates the Chain of Responsibility pattern. The user answers three security questions one at a time. Each question is handled by its own handler, linked to the next_handler. The chain continues as each answer is verified, but ONLY after all three questions pass can the user reset their password.
-![Sequence Diagram](Screenshot 2026-06-14 023918.png)
+![Sequence Diagram](.png)
 
 
 Diagram 5: 
