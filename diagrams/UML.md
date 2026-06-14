@@ -16,10 +16,12 @@ Diagram 3: Sequence Diagram(User Logging in)
 Description:Shows the login process and demonstrates the Singleton pattern. When login.py calls SessionManager(), the same single instance is returned every time, so the user's session is consistently tracked across the entire application.
 ![Sequence Diagram](sequencediagram3.png)
 
-Diagram 4: Sequence Diagram()
-Description: Demonstrates the Chain of Responsibility pattern. The user answers three security questions one at a time. Each question is handled by its own handler, linked to the next_handler. The chain continues as each answer is verified, but ONLY after all three questions pass can the user reset their password.
+Diagram 4: Sequence Diagram(Chain)
+Description: This diagram shows the Chain of Responsibility pattern. The user answers three security questions one at a time. Each question is handled by its own handler, linked to the next_handler. The chain continues as each answer is verified, but ONLY after all three questions pass can the user reset their password.
 ![Sequence Diagram](sequencediagram4.png)
 
 
 Diagram 5: 
 Description: Shows the three possible states of a user session: Logged Out, Logged In, and Recovering Password. Transitions happen on login, logout, forgot password, wrong answer, or successful password reset. The Singleton SessionManager tracks which state the session is in.
+![Sequence Diagram](.png)
+
