@@ -6,4 +6,4 @@ is the singleton, tracks the current logged in user across the entire applicatio
 Security questions which is our abstract class along with its three concrete subclasses which forms
 the Chain for password recovery. 
 
-[Class Diagram](class_diagram.png)
+![Class Diagram](class_diagram.png)
