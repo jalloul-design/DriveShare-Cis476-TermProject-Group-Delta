@@ -1,2 +1,0 @@
-# Ownened By Mira
-
