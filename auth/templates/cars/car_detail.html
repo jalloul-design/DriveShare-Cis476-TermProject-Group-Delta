@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Car Details</title>
+</head>
+<body>
+    <h1>{{ car.year }} {{ car.model }}</h1>
+
+    <p>
+        <a href="{{ url_for('cars.cars') }}">Back to Cars</a>
+        |
+        <a href="{{ url_for('cars.edit_car', car_id=car.id) }}">Edit Car</a>
+    </p>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <p>Owner: {{ car.owner_id }}</p>
+    <p>Pickup Location: {{ car.pickup_location }}</p>
+    <p>Mileage: {{ car.mileage }}</p>
+    <p>Daily Price: ${{ car.daily_price }}</p>
+
+    <h3>Availability</h3>
+
+    {% for date_range in car.availability_calendar %}
+        <p>{{ date_range["start"] }} to {{ date_range["end"] }}</p>
+    {% endfor %}
+
+    <h3>Book This Car</h3>
+
+    <form method="POST" action="{{ url_for('cars.book') }}">
+        <input type="hidden" name="car_id" value="{{ car.id }}">
+
+        <label>Start Date:</label>
+        <input type="date" name="start_date" required>
+
+        <br><br>
+
+        <label>End Date:</label>
+        <input type="date" name="end_date" required>
+
+        <br><br>
+
+        <button type="submit">Confirm Booking</button>
+    </form>
+
+    <h3>Watch This Car</h3>
+
+    <form method="POST" action="{{ url_for('cars.watch_car', car_id=car.id) }}">
+        <label>Notify me if price drops below:</label>
+        <input type="number" step="0.01" name="max_price">
+
+        <br><br>
+
+        <label>
+            <input type="checkbox" name="wants_availability_alert" checked>
+            Notify me when availability changes
+        </label>
+
+        <br><br>
+
+        <button type="submit">Add to Watchlist</button>
+    </form>
+
+    <form method="POST" action="{{ url_for('cars.unwatch_car', car_id=car.id) }}">
+        <button type="submit">Remove from Watchlist</button>
+    </form>
+</body>
+</html>
