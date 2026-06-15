@@ -10,6 +10,20 @@
     {% if user %}
         <p>Logged in as: {{ user }}</p>
         <a href="{{ url_for('auth.logout') }}">Logout</a>
+
+        <h2>Cars</h2>
+        <a href="{{ url_for('cars.cars') }}">Browse All Cars</a> |
+        <a href="{{ url_for('cars.new_car') }}">List My Car for Rent</a> |
+        <a href="{{ url_for('cars.search') }}">Search for Cars</a> |
+        <a href="{{ url_for('cars.bookings') }}">My Bookings</a>
+
+        <h2>Messages & Payments</h2>
+        <a href="{{ url_for('messaging.messages') }}">Inbox</a> |
+        <a href="{{ url_for('messaging.new_message') }}">Send a Message</a> |
+        <a href="{{ url_for('messaging.notifications') }}">Notifications</a> |
+        <a href="{{ url_for('messaging.pay') }}">Make a Payment</a> |
+        <a href="{{ url_for('messaging.history') }}">Payment History</a>
+
     {% else %}
         <p>You are not logged in.</p>
         <a href="{{ url_for('auth.login') }}">Login</a> |
