@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+     <meta charset="UTF-8">
+    <title>Register - DriveShare</title>
+</head>
+<body>
+    <h1>Register An Account</h1>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for msg in messages %}
+                <p style="color: red;">{{ msg }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+        <label><b>Email:</b></label><br>
+        <input type="email" name="user_email" required><br><br>
+
+        <label><b>Password:</b></label><br>
+        <input type="password" name="user_password" required><br><br>
+
+        <label><b>Question 1:</b></label><br>
+        <select name="question1" required>
+            <option value="">-- Select a question --</option>
+            <option value="What's your favorite animal?">What's your favorite animal?</option>
+            <option value="What's your pet's name?">What's your pet's name?</option>
+            <option value="What's your favorite color?">What's your favorite color?</option>
+        </select><br>
+        <label>Answer 1:</label><br>
+        <input type="text" name="answer1" required><br><br>
+
+        <label><b>Question 2:</b></label><br>
+        <select name="question2" required>
+            <option value="">-- Select a question --</option>
+            <option value="What city were you born in?">What city were you born in?</option>
+            <option value="What's your mother's name?">What's your mother's name?</option>
+            <option value="What's the name of your middle school?">What's the name of your middle school?</option>
+        </select><br>
+        <label>Answer 2:</label><br>
+        <input type="text" name="answer2" required><br><br>
+
+        <label><b>Question 3:</b></label><br>
+        <select name="question3" required>
+            <option value="">-- Select a question --</option>
+            <option value="What's your maiden name?">What's your maiden name?</option>
+            <option value="What's your favorite hobby?">What's your favorite hobby?</option>
+            <option value="What is the first state/country you visited?">What is the first state/country you visited?</option>
+        </select><br>
+        <label>Answer 3:</label><br>
+        <input type="text" name="answer3" required><br><br>
+
+        <button type="submit">Register</button>
+    </form>
+
+    <p>Already have an account? <a href="{{ url_for('auth.login') }}">Login</a></p>
+</body>
+</html>

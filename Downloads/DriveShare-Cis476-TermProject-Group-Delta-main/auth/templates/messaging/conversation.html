@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DriveShare Message</title>
+</head>
+<body>
+    <h1>Send Message</h1>
+    <p>Logged in as: {{ user }}</p>
+
+    <form method="POST" action="{{ url_for('messaging.new_message') }}">
+        <label>Recipient Email:</label><br>
+        <input type="email" name="recipient_email" required><br><br>
+
+        <label>Message:</label><br>
+        <textarea name="content" rows="5" cols="40" required></textarea><br><br>
+
+        <button type="submit">Send Message</button>
+    </form>
+
+    <p><a href="{{ url_for('messaging.messages') }}">Back to Inbox</a></p>
+</body>
+</html>
