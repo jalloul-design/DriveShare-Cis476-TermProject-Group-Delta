@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>DriveShare Cars</title>
+</head>
+<body>
+    <h1>DriveShare Cars</h1>
+
+    <p>
+        <a href="{{ url_for('cars.new_car') }}">Create New Car Listing</a>
+        |
+        <a href="{{ url_for('cars.search') }}">Search Cars</a>
+        |
+        <a href="{{ url_for('cars.bookings') }}">My Bookings</a>
+    </p>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if cars %}
+        {% for car in cars %}
+            <div>
+                <h3>{{ car.year }} {{ car.model }}</h3>
+                <p>Pickup Location: {{ car.pickup_location }}</p>
+                <p>Mileage: {{ car.mileage }}</p>
+                <p>Daily Price: ${{ car.daily_price }}</p>
+
+                <a href="{{ url_for('cars.car_detail', car_id=car.id) }}">View Details</a>
+            </div>
+
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No cars have been listed yet.</p>
+    {% endif %}
+</body>
+</html>

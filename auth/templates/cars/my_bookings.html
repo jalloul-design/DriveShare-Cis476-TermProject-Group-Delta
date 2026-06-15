@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>My Bookings</title>
+</head>
+<body>
+    <h1>My Bookings</h1>
+
+    <p><a href="{{ url_for('cars.cars') }}">Back to Cars</a></p>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if bookings %}
+        {% for booking in bookings %}
+            <div>
+                <p>Car ID: {{ booking.car_id }}</p>
+                <p>Start Date: {{ booking.start_date }}</p>
+                <p>End Date: {{ booking.end_date }}</p>
+                <p>Total Price: ${{ booking.total_price }}</p>
+                <p>Status: {{ booking.status }}</p>
+            </div>
+
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>You do not have any bookings yet.</p>
+    {% endif %}
+</body>
+</html>
