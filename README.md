@@ -6,51 +6,51 @@
 
 # Model files
 
-- 'model/user.py'
+- model/user.py
 
 
 # Auth module
 
-auth/__init__.py
+- auth/__init__.py
 
-auth/routes.py
+- auth/routes.py
 
-auth/session_manager.py
+- auth/session_manager.py
 
-auth/registration.py
+- auth/registration.py
 
-auth/login.py
+- auth/login.py
 
-auth/password_recovery.py
+- auth/password_recovery.py
 
 
 # Foundation files
 
-app.py
+- app.py
 
-database.py
+- database.py
 
-requirements.txt
+- requirements.txt
 
 
 # Templates
 
-templates/auth/register.html
+- templates/auth/register.html
 
-templates/auth/login.html
+- templates/auth/login.html
 
-templates/auth/homepage.html
+- templates/auth/homepage.html
 
-templates/auth/recover_account.html
+- templates/auth/recover_account.html
 
-templates/auth/recovery_questions.html
+- templates/auth/recovery_questions.html
 
-templates/auth/reset_password.html
+- templates/auth/reset_password.html
 
 
 # Tests
 
-tests/test_auth.py
+- tests/test_auth.py
 
 # Design Patterns Implemented
 
@@ -62,21 +62,21 @@ SecurityQuestion is the base handler. Three handlers which are Question1_Securit
 
 # Routes Added
 
-/register
+- /register
 
-/login
+- /login
 
-/logout
+- /logout
 
-/homepage
+- /homepage
 
-/recover_account
+- /recover_account
 
-/recovery_questions
+- /recovery_questions
 
-/reset_password
+- /reset_password
 
 
 # Database Tables Added
 
-users
+- users
