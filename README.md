@@ -1,15 +1,15 @@
 # DriveShare-Cis476-TermProject-Group-Delta
 
-#Mira Module - Authentication, Sessions, Singleton, and Chain of Responsibility
+# Mira Module - Authentication, Sessions, Singleton, and Chain of Responsibility
 
-#Files Added
+# Files Added
 
-#Model files
+# Model files
 
 model/user.py
 
 
-#Auth module
+# Auth module
 
 auth/__init__.py
 auth/routes.py
@@ -19,14 +19,14 @@ auth/login.py
 auth/password_recovery.py
 
 
-#Foundation files
+# Foundation files
 
 app.py
 database.py
 requirements.txt
 
 
-#Templates
+# Templates
 templates/auth/register.html
 templates/auth/login.html
 templates/auth/homepage.html
@@ -35,10 +35,10 @@ templates/auth/recovery_questions.html
 templates/auth/reset_password.html
 
 
-#Tests
+# Tests
 tests/test_auth.py
 
-#Design Patterns Implemented
+# Design Patterns Implemented
 
 - Singleton Pattern
 SessionManager ensures only one instance exists across the entire application. It tracks the user crurrently logged so any module like  auth, cars, messaging can check the session through the same shared object.
@@ -46,7 +46,7 @@ SessionManager ensures only one instance exists across the entire application. I
 - Chain of Responsibility Pattern
 SecurityQuestion is the base handler. Three handlers which are Question1_SecurityQuestion_Handler, Question2_SecurityQuestion_Handler, Question3_SecurityQuestion_Handler are all linked together. The user must pass all three questions in order to move forward and reset their password.
 
-#Routes Added
+# Routes Added
 
 /register
 /login
@@ -57,6 +57,6 @@ SecurityQuestion is the base handler. Three handlers which are Question1_Securit
 /reset_password
 
 
-#Database Tables Added
+# Database Tables Added
 
 users
