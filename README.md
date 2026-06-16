@@ -136,3 +136,8 @@ Components do not directly reference each other.
 - `/messaging/history`
 
 ## Database Tables Added
+- `messages`
+- `notifications`
+- `balances`
+- `transactions`
+- `reviews`
