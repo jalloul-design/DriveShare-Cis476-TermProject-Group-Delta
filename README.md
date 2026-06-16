@@ -5,8 +5,8 @@ DriveShare is a peer-to-peer car rental platform inspired by Turo, built in Pyth
 ## Team Members
 
 - Mira Jalloul
-- Sleman
-- Mohammed
+- Sleman Ahmed
+- Mohammed Nour
 
 ## Tech Stack
 
