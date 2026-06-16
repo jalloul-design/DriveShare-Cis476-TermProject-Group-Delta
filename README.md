@@ -6,7 +6,7 @@
 
 # Model files
 
-model/user.py
+- 'model/user.py'
 
 
 # Auth module
