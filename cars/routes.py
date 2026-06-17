@@ -19,6 +19,13 @@ def get_current_user():
     return session_manager.get_current_user()
 
 
+def users_match(user_one, user_two):
+    if user_one is None or user_two is None:
+        return False
+
+    return str(user_one).strip().lower() == str(user_two).strip().lower()
+
+
 @cars_bp.route("/cars")
 def cars():
     all_cars = Car.get_all_cars()
@@ -65,13 +72,21 @@ def new_car():
 
 @cars_bp.route("/cars/<int:car_id>")
 def car_detail(car_id):
+    current_user = get_current_user()
     car = Car.get_car_by_id(car_id)
 
     if car is None:
         flash("Car not found")
         return redirect(url_for("cars.cars"))
 
-    return render_template("cars/car_detail.html", car=car)
+    is_owner = users_match(current_user, car.owner_id)
+
+    return render_template(
+        "cars/car_detail.html",
+        car=car,
+        current_user=current_user,
+        is_owner=is_owner
+    )
 
 
 @cars_bp.route("/cars/<int:car_id>/edit", methods=["GET", "POST"])
@@ -87,7 +102,7 @@ def edit_car(car_id):
         flash("Car not found")
         return redirect(url_for("cars.cars"))
 
-    if car.owner_id != current_user:
+    if not users_match(car.owner_id, current_user):
         flash("Only the owner can edit this car")
         return redirect(url_for("cars.car_detail", car_id=car.id))
 
@@ -141,6 +156,16 @@ def watch_car(car_id):
         flash("You must be logged in first")
         return redirect(url_for("auth.login"))
 
+    car = Car.get_car_by_id(car_id)
+
+    if car is None:
+        flash("Car not found")
+        return redirect(url_for("cars.cars"))
+
+    if users_match(car.owner_id, current_user):
+        flash("You cannot watch your own car")
+        return redirect(url_for("cars.car_detail", car_id=car_id))
+
     max_price = request.form.get("max_price")
     wants_availability_alert = request.form.get("wants_availability_alert") == "on"
 
@@ -184,6 +209,16 @@ def book():
     start_date = request.form["start_date"]
     end_date = request.form["end_date"]
 
+    car = Car.get_car_by_id(car_id)
+
+    if car is None:
+        flash("Car not found")
+        return redirect(url_for("cars.cars"))
+
+    if users_match(car.owner_id, current_user):
+        flash("You cannot book your own car")
+        return redirect(url_for("cars.car_detail", car_id=car_id))
+
     success, message = create_booking(car_id, current_user, start_date, end_date)
 
     flash(message)
@@ -204,4 +239,14 @@ def bookings():
 
     my_bookings = Booking.get_bookings_by_renter(current_user)
 
-    return render_template("cars/my_bookings.html", bookings=my_bookings)
+    booking_details = []
+
+    for booking in my_bookings:
+        car = Car.get_car_by_id(booking.car_id)
+
+        booking_details.append({
+            "booking": booking,
+            "car": car
+        })
+
+    return render_template("cars/my_bookings.html", bookings=booking_details)

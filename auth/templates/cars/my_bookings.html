@@ -1,12 +1,19 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>My Bookings</title>
 </head>
 <body>
     <h1>My Bookings</h1>
 
-    <p><a href="{{ url_for('cars.cars') }}">Back to Cars</a></p>
+    <p>
+        <a href="{{ url_for('auth.homepage') }}">Back to Homepage</a>
+        |
+        <a href="{{ url_for('cars.cars') }}">Browse Cars</a>
+        |
+        <a href="{{ url_for('messaging.history') }}">Payment History</a>
+    </p>
 
     {% with messages = get_flashed_messages() %}
         {% if messages %}
@@ -17,13 +24,33 @@
     {% endwith %}
 
     {% if bookings %}
-        {% for booking in bookings %}
+        {% for item in bookings %}
+            {% set booking = item["booking"] %}
+            {% set car = item["car"] %}
+
             <div>
-                <p>Car ID: {{ booking.car_id }}</p>
+                <h3>Booking #{{ booking.id }}</h3>
+
+                {% if car %}
+                    <p>Car: {{ car.year }} {{ car.model }}</p>
+                    <p>Owner: {{ car.owner_id }}</p>
+                    <p>Pickup Location: {{ car.pickup_location }}</p>
+                {% else %}
+                    <p>Car: Car information unavailable</p>
+                {% endif %}
+
                 <p>Start Date: {{ booking.start_date }}</p>
                 <p>End Date: {{ booking.end_date }}</p>
                 <p>Total Price: ${{ booking.total_price }}</p>
                 <p>Status: {{ booking.status }}</p>
+
+                {% if car %}
+                    <p>
+                        <a href="{{ url_for('messaging.pay', booking_id=booking.id, amount=booking.total_price, payee_email=car.owner_id) }}">
+                            Make Payment for This Booking
+                        </a>
+                    </p>
+                {% endif %}
             </div>
 
             <hr>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Notifications</title>
+</head>
+<body>
+    <h1>Notifications</h1>
+
+    <p><a href="{{ url_for('auth.homepage') }}">Back to Homepage</a></p>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    {% if notifications %}
+        {% for notification in notifications %}
+            <div>
+                <p>Type: {{ notification["notification_type"] }}</p>
+                <p>Message: {{ notification["content"] }}</p>
+                <p>Created At: {{ notification["created_at"] }}</p>
+
+                {% if notification["read"] == 1 %}
+                    <p>Status: Read</p>
+                {% else %}
+                    <p>Status: Unread</p>
+                {% endif %}
+            </div>
+
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No notifications yet.</p>
+    {% endif %}
+</body>
+</html>

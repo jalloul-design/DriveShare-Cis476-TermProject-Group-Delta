@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Inbox</title>
+</head>
+<body>
+    <h1>Inbox</h1>
+
+    <p><a href="{{ url_for('auth.homepage') }}">Back to Homepage</a></p>
+    <p><a href="{{ url_for('messaging.new_message') }}">Send a Message</a></p>
+
+    {% if inbox %}
+        {% for message in inbox %}
+            <div>
+                <p>From: {{ message["sender_email"] }}</p>
+                <p>{{ message["content"] }}</p>
+                <p>Sent at: {{ message["sent_at"] }}</p>
+            </div>
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No messages yet.</p>
+    {% endif %}
+</body>
+</html>
