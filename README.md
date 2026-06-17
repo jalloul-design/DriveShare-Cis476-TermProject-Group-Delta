@@ -44,6 +44,8 @@ python app.py
 4. List a car, search for cars, book one, send a message, make a payment
 5. Test password recovery by logging out and clicking "Forgot Password"
 
+## Presentation URL
+Slides: https://umich-my.sharepoint.com/:p:/g/personal/jalloul_umich_edu/IQBX0sXmBWC2TLll3aT3OjcqAavRk9ePVS04VjmDI8tptYk?e=mMc7kC
 
 # Mira Module - Authentication, Sessions, Singleton, and Chain of Responsibility
 
