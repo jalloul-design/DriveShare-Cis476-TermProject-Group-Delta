@@ -1,4 +1,5 @@
 # DriveShare-Cis476-TermProject-Group-Delta
+https://youtu.be/4qC57DX_Lt4?si=_Dlq4Ydo2aLiWXtW
 
 DriveShare is a peer-to-peer car rental platform inspired by Turo, built in Python with Flask and SQLite. Users can register an account (secured with bcrypt hashing and three security questions for recovery), log in, and access three connected modules: auth for sessions and accounts, cars for listings, search, booking with overlap prevention, and watchlist alerts, and messaging for in-app messages, notifications, and payments. The project implements all six required design patterns which are Singleton, Chain of Responsibility, Builder, Observer, Proxy, and Mediator, distributed across the three person group. Each module communicates through a shared SessionManager Singleton, allowing renters and owners to list cars, book trips, message each other, and complete payments in one seamless flow.
 
