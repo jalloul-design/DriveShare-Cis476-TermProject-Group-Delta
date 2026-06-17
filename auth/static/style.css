@@ -1,0 +1,169 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 32px;
+    font-family: Arial, Helvetica, sans-serif;
+    background: #f7f7f7;
+    color: #121212;
+}
+
+h1 {
+    margin-top: 0;
+    font-size: 34px;
+    color: #111111;
+}
+
+h2, h3 {
+    color: #111111;
+    margin-top: 28px;
+}
+
+p {
+    font-size: 16px;
+    line-height: 1.5;
+}
+
+a {
+    color: #007a46;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+a:hover {
+    text-decoration: underline;
+}
+
+body > p:first-of-type {
+    background: white;
+    padding: 14px 18px;
+    border-radius: 12px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.06);
+    margin-bottom: 25px;
+}
+
+form {
+    background: white;
+    padding: 22px;
+    border-radius: 14px;
+    max-width: 520px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.08);
+    margin-bottom: 25px;
+}
+
+label {
+    font-weight: bold;
+    display: inline-block;
+    margin-bottom: 7px;
+}
+
+input,
+textarea,
+select {
+    width: 100%;
+    padding: 12px;
+    margin-top: 5px;
+    border: 1px solid #d9d9d9;
+    border-radius: 10px;
+    font-size: 15px;
+    background: #ffffff;
+}
+
+input[type="checkbox"] {
+    width: auto;
+    margin-right: 8px;
+}
+
+button {
+    background: #00a86b;
+    color: white;
+    border: none;
+    padding: 12px 18px;
+    border-radius: 999px;
+    font-size: 15px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+button:hover {
+    background: #008c59;
+}
+
+hr {
+    border: none;
+    border-top: 1px solid #dddddd;
+    margin: 30px 0;
+}
+
+div {
+    background: white;
+    padding: 20px;
+    border-radius: 14px;
+    margin-bottom: 18px;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+strong {
+    color: #007a46;
+}
+
+table {
+    width: 100%;
+    background: white;
+    border-collapse: collapse;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(0, 0, 0, 0.07);
+}
+
+th,
+td {
+    padding: 14px;
+    border-bottom: 1px solid #eeeeee;
+    text-align: left;
+}
+
+th {
+    background: #111111;
+    color: white;
+}
+
+.car-card {
+    background: white;
+    padding: 22px;
+    border-radius: 16px;
+    margin-bottom: 20px;
+    box-shadow: 0 3px 14px rgba(0, 0, 0, 0.08);
+}
+
+.notice {
+    background: #e9fff5;
+    border-left: 5px solid #00a86b;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+}
+
+.warning {
+    background: #fff5e6;
+    border-left: 5px solid #ff9900;
+    padding: 14px;
+    border-radius: 10px;
+    margin-bottom: 18px;
+}
+
+@media (max-width: 700px) {
+    body {
+        padding: 18px;
+    }
+
+    h1 {
+        font-size: 28px;
+    }
+
+    form {
+        max-width: 100%;
+    }
+}

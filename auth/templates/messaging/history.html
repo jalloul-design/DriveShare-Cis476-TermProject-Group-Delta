@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <title>Payment History</title>
+</head>
+<body>
+    <h1>Payment History</h1>
+
+    <p>
+        <a href="{{ url_for('auth.homepage') }}">Back to Homepage</a>
+        |
+        <a href="{{ url_for('messaging.pay') }}">Make a Payment</a>
+        |
+        <a href="{{ url_for('cars.bookings') }}">My Bookings</a>
+    </p>
+
+    <p>Logged in as: {{ user }}</p>
+    <p>Current Balance: ${{ balance }}</p>
+
+    {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            {% for message in messages %}
+                <p>{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <h2>Previous Transactions</h2>
+
+    {% if transactions %}
+        {% for transaction in transactions %}
+            <div>
+                {% if transaction["payee_email"] == user %}
+                    <h3>Payment Received</h3>
+                {% elif transaction["payer_email"] == user %}
+                    <h3>Payment Sent</h3>
+                {% else %}
+                    <h3>Transaction</h3>
+                {% endif %}
+
+                <p>Transaction ID: {{ transaction["id"] }}</p>
+                <p>Payer: {{ transaction["payer_email"] }}</p>
+                <p>Payee: {{ transaction["payee_email"] }}</p>
+                <p>Amount: ${{ transaction["amount"] }}</p>
+                <p>Booking ID: {{ transaction["booking_id"] }}</p>
+                <p>Status: {{ transaction["status"] }}</p>
+                <p>Time: {{ transaction["timestamp"] }}</p>
+            </div>
+
+            <hr>
+        {% endfor %}
+    {% else %}
+        <p>No payment history yet.</p>
+    {% endif %}
+</body>
+</html>

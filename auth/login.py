@@ -11,7 +11,7 @@ def user_login(user_email, user_password):
 
     session_manager = SessionManager()
     session_manager.login(user['user_email'])
-    return True, 'Login Successful'
+    return True, ''
 #Logout function
 def user_logout():
     session_manager = SessionManager()

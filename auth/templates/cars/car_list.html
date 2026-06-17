@@ -1,11 +1,12 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
     <title>DriveShare Cars</title>
 </head>
 <body>
     <h1>DriveShare Cars</h1>
-
+    
     <p>
         <a href="{{ url_for('cars.new_car') }}">Create New Car Listing</a>
         |
